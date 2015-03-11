@@ -1,7 +1,8 @@
-# arduinolabs-lyceum
+﻿# arduinolabs-lyceum
 Arduino labs for NSTU lyceum students
 
 Использование Git
+ларалараларала
 =====
 
 
