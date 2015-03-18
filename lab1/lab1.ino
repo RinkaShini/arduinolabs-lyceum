@@ -1,3 +1,4 @@
+#include <Bounce.h>
 /*
 *     Лабораторная работа 1
 *     "Счетчик нажатий"
@@ -17,6 +18,10 @@
 #define BUTTON_DOWN 12
 
 int number=9;
+
+Bounce bounserUp = Bounce(BUTTON_UP, 5);
+Bounce bounserDown = Bounce(BUTTON_DOWN, 5);
+
 byte digit[10] = {
   0b00111111,
   0b00000110,
@@ -44,13 +49,25 @@ void setup() {
 }
 void loop() {
 
-  if (digitalRead(BUTTON_UP)) number+=1;
-  if (digitalRead(BUTTON_DOWN)) number-=1;
+  if (bounserUp.update()) {
+    if (bounserUp.read() ==LOW) {
+      number+=1;
+    }
+  }
+
+  if (bounserDown.update()) {
+    if (bounserDown.read() == LOW) {
+      number-=1;
+    }
+  }
+
+  // if (digitalRead(BUTTON_UP)) number+=1;
+  // if (digitalRead(BUTTON_DOWN)) number-=1;
   if (number==-1)  number=9;
   if (number==10)  number=0;
 
 showDigit(number);
-delay(300);
+//delay(300);
 //number++;
 }
 void showDigit(int i){
