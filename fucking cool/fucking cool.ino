@@ -8,14 +8,22 @@ void setup() {
 
   lcd.begin(16, 2);
 
+  lcd.print("RUCHKA");
+
 }
 
   void loop() {
     lcd.clear();
     lcd.home();
     lcd.print("fucking cool");
-  	ruchka=analogRead(A0);
+    lcd.print("\x8D");
+  	ruchka=map(analogRead(A0),0,1023,0,17);
   	lcd.setCursor(0, 1);
-  	lcd.print(ruchka);
-  	delay(100);
+  	for (int i; i<=ruchka; i++)
+    {
+      lcd.print("\xFF");
+    }
+    delay (100);
+
+  	
   }
