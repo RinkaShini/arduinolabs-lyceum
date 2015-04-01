@@ -29,7 +29,7 @@ void setup() {
   lcd.print("\xA8");
   lcd.print("pokope");
   lcd.print("\xBD");
-  lcd.print("ko");
+  lcd.print("ka");
   lcd.print(" ");
   lcd.print("\x93");
   lcd.print("\x92");
