@@ -23,14 +23,24 @@ void testDrive (int out1, int out2, int out3, int out4){
 
 }
 
-void leftMotorBack() {
+void leftMotorForward() {
 	digitalWrite(OUT1, LOW);
 	digitalWrite(OUT2, HIGH);
 }
 
-void leftMotorForward() {
+void leftMotorBack() {
 	digitalWrite(OUT2, LOW);
 	digitalWrite(OUT1, HIGH);
+}
+
+void leftMotorForwardPWM(byte pwmDuty) {
+	digitalWrite(OUT1, LOW);
+	digitalWrite(OUT2, pwmDuty);
+}
+
+void leftMotorBackPWM(byte pwmDuty) {
+	digitalWrite(OUT2, LOW);
+	digitalWrite(OUT1, pwmDuty);
 }
 
 void leftMotorStop() {
@@ -38,14 +48,25 @@ void leftMotorStop() {
 	digitalWrite(OUT1, LOW);
 }
 
+void rightMotorForward() {
+	digitalWrite(OUT4, LOW);
+	digitalWrite(OUT3, HIGH);
+}
+
+
 void rightMotorBack() {
 	digitalWrite(OUT3, LOW);
 	digitalWrite(OUT4, HIGH);
 }
 
-void rightMotorForward() {
+void rightMotorForwardPWM(byte pwmDuty) {
+	digitalWrite(OUT3, LOW);
+	digitalWrite(OUT4, pwmDuty);
+}
+
+void rightMotorBackPWM(byte pwmDuty) {
 	digitalWrite(OUT4, LOW);
-	digitalWrite(OUT3, HIGH);
+	digitalWrite(OUT3, pwmDuty);
 }
 
 void rightMotorStop() {
@@ -54,10 +75,10 @@ void rightMotorStop() {
 } 
 
 void loop(){
-	rightMotorForward();
-	leftMotorForward();
+	rightMotorForwardPWM(250);
+	leftMotorForwardPWM(250);
 	delay(2000);
-	rightMotorBack();
-	leftMotorBack();
+	rightMotorBackPWM(120);
+	leftMotorBackPWM(120);
 	delay(2000);
 }
